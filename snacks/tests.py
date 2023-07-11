@@ -5,7 +5,6 @@ class TestHome(SimpleTestCase):
     def test_status_code(self):
         url = reverse('home')
         response = self.client.get(url)
-        # print(response)
         self.assertEqual(response.status_code, 200)
 
 
@@ -13,3 +12,15 @@ class TestHome(SimpleTestCase):
         url = reverse('home')
         response = self.client.get(url)
         self.assertTemplateUsed(response, 'home.html')
+
+class TestAbout(SimpleTestCase):
+    def test_status_code(self):
+        url = reverse('about')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+
+    def test_about_page_templates(self):
+        url = reverse('about')
+        response = self.client.get(url)
+        self.assertTemplateUsed(response, 'about.html')        
